@@ -1,0 +1,58 @@
+.portrait-card {
+  position: relative;
+  margin: 0;
+  transform: rotate(1.5deg);
+}
+
+.portrait-frame {
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 55% 35%, #183148 0, #0d192a 48%, #07101e 100%);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, .3);
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 26%;
+  transform: scale(1.38);
+  transform-origin: 50% 30%;
+  filter: saturate(.85) contrast(1.05);
+}
+
+.portrait-card::before {
+  content: '';
+  position: absolute;
+  inset: -12px 12px 70px -12px;
+  border: 1px solid rgba(69, 230, 176, .28);
+  z-index: -1;
+}
+
+.portrait-card figcaption { margin: 18px 4px 0; display: grid; gap: 2px; }
+.portrait-card figcaption span { font: 600 .72rem 'Space Grotesk'; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.portrait-card figcaption strong { font: 500 .92rem 'DM Sans'; color: white; }
+
+.contact {
+  max-width: none;
+  background: linear-gradient(135deg, #0d192a, #102538);
+  padding-left: max(24px, calc((100vw - var(--max)) / 2));
+  padding-right: max(24px, calc((100vw - var(--max)) / 2));
+}
+
+.contact-grid { border-top: 1px solid var(--line); }
+.contact-grid a { display: grid; grid-template-columns: .45fr 1fr auto; align-items: center; gap: 24px; padding: 27px 4px; border-bottom: 1px solid var(--line); transition: .25s; }
+.contact-grid a:hover, .contact-grid a:focus-visible { padding-left: 14px; background: rgba(69, 230, 176, .035); }
+.contact-grid span { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.contact-grid strong { font: 500 clamp(1rem, 2.5vw, 1.45rem) 'Space Grotesk'; color: white; overflow-wrap: anywhere; }
+.contact-grid i { font-style: normal; font-size: 1.5rem; color: var(--accent); }
+
+@media (max-width: 800px) {
+  .portrait-card { transform: none; }
+  .portrait-frame { height: min(115vw, 560px); }
+  .contact-grid a { grid-template-columns: 1fr auto; gap: 4px 16px; }
+  .contact-grid a span, .contact-grid a strong { grid-column: 1; }
+  .contact-grid a i { grid-column: 2; grid-row: 1 / 3; }
+}
